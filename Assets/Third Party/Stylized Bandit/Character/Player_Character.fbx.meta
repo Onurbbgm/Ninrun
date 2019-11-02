@@ -1,0 +1,1075 @@
+fileFormatVersion: 2
+guid: 166e0d0a86e7cd343b553a7fc695649f
+timeCreated: 1520005323
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_1_Left
+    100002: Arm_1_Right
+    100004: Arm_2_Left
+    100006: Arm_2_Left_end
+    100008: Arm_2_Right
+    100010: Arm_2_Right_end
+    100012: Armature
+    100014: Body_Upper
+    100016: Cloth_1
+    100018: Cloth_2
+    100020: Cloth_2_end
+    100022: Cloth_3
+    100024: Cloth_4
+    100026: Cloth_5
+    100028: Cloth_5_end
+    100030: Foot_1_Left
+    100032: Foot_1_Right
+    100034: Foot_2_Left
+    100036: Foot_2_Right
+    100038: Foot_3_Left
+    100040: Foot_3_Left_end
+    100042: Foot_3_Right
+    100044: Foot_3_Right_end
+    100046: Head
+    100048: Head_end
+    100050: IK_Arm_Left
+    100052: IK_Arm_Left_end
+    100054: IK_Arm_Right
+    100056: IK_Arm_Right_end
+    100058: IK_Cloth_1
+    100060: IK_Cloth_1_end
+    100062: IK_Cloth_2
+    100064: IK_Cloth_2_end
+    100066: IK_Foot_Left
+    100068: IK_Foot_Left_end
+    100070: IK_Foot_Right
+    100072: IK_Foot_Right_end
+    100074: Mesh
+    100076: Mesh.001
+    100078: Mesh.002
+    100080: //RootNode
+    100082: Root
+    400000: Arm_1_Left
+    400002: Arm_1_Right
+    400004: Arm_2_Left
+    400006: Arm_2_Left_end
+    400008: Arm_2_Right
+    400010: Arm_2_Right_end
+    400012: Armature
+    400014: Body_Upper
+    400016: Cloth_1
+    400018: Cloth_2
+    400020: Cloth_2_end
+    400022: Cloth_3
+    400024: Cloth_4
+    400026: Cloth_5
+    400028: Cloth_5_end
+    400030: Foot_1_Left
+    400032: Foot_1_Right
+    400034: Foot_2_Left
+    400036: Foot_2_Right
+    400038: Foot_3_Left
+    400040: Foot_3_Left_end
+    400042: Foot_3_Right
+    400044: Foot_3_Right_end
+    400046: Head
+    400048: Head_end
+    400050: IK_Arm_Left
+    400052: IK_Arm_Left_end
+    400054: IK_Arm_Right
+    400056: IK_Arm_Right_end
+    400058: IK_Cloth_1
+    400060: IK_Cloth_1_end
+    400062: IK_Cloth_2
+    400064: IK_Cloth_2_end
+    400066: IK_Foot_Left
+    400068: IK_Foot_Left_end
+    400070: IK_Foot_Right
+    400072: IK_Foot_Right_end
+    400074: Mesh
+    400076: Mesh.001
+    400078: Mesh.002
+    400080: //RootNode
+    400082: Root
+    4300000: Mesh.002
+    4300002: Mesh.001
+    4300004: Mesh
+    7400000: Idle
+    7400002: Armature|ArmatureAction.005
+    7400004: Armature|ArmatureAction.006
+    7400006: Armature|ArmatureAction.012
+    7400008: CharacterAnimation
+    7400010: Walk
+    7400012: Run
+    7400014: Jump_Start
+    7400016: Jump_Flip
+    7400018: Jump_Loop
+    7400020: Jump_End
+    9500000: //RootNode
+    13700000: Mesh
+    13700002: Mesh.001
+    13700004: Mesh.002
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: CharacterAnimation
+      takeName: Armature|CharacterAnimation
+      firstFrame: 0
+      lastFrame: 439
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2/Cloth_2_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5/Cloth_5_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left/Foot_3_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right/Foot_3_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1/IK_Cloth_1_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2/IK_Cloth_2_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: Mesh.001
+        weight: 1
+      - path: Mesh.002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Armature|CharacterAnimation
+      firstFrame: 30
+      lastFrame: 110
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2/Cloth_2_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5/Cloth_5_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left/Foot_3_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right/Foot_3_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1/IK_Cloth_1_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2/IK_Cloth_2_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: Mesh.001
+        weight: 1
+      - path: Mesh.002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Armature|CharacterAnimation
+      firstFrame: 140
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2/Cloth_2_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5/Cloth_5_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left/Foot_3_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right/Foot_3_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1/IK_Cloth_1_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2/IK_Cloth_2_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: Mesh.001
+        weight: 1
+      - path: Mesh.002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Run
+      takeName: Armature|CharacterAnimation
+      firstFrame: 210
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2/Cloth_2_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5/Cloth_5_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left/Foot_3_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right/Foot_3_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1/IK_Cloth_1_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2/IK_Cloth_2_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: Mesh.001
+        weight: 1
+      - path: Mesh.002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump_Start
+      takeName: Armature|CharacterAnimation
+      firstFrame: 280
+      lastFrame: 290
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2/Cloth_2_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5/Cloth_5_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left/Foot_3_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right/Foot_3_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1/IK_Cloth_1_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2/IK_Cloth_2_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: Mesh.001
+        weight: 1
+      - path: Mesh.002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump_Flip
+      takeName: Armature|CharacterAnimation
+      firstFrame: 310
+      lastFrame: 330
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2/Cloth_2_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5/Cloth_5_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left/Foot_3_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right/Foot_3_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1/IK_Cloth_1_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2/IK_Cloth_2_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: Mesh.001
+        weight: 1
+      - path: Mesh.002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump_Loop
+      takeName: Armature|CharacterAnimation
+      firstFrame: 360
+      lastFrame: 400
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2/Cloth_2_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5/Cloth_5_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left/Foot_3_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right/Foot_3_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1/IK_Cloth_1_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2/IK_Cloth_2_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: Mesh.001
+        weight: 1
+      - path: Mesh.002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump_End
+      takeName: Armature|CharacterAnimation
+      firstFrame: 430
+      lastFrame: 439
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_1/Cloth_2/Cloth_2_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5
+        weight: 1
+      - path: Armature/Root/Body_Upper/Cloth_3/Cloth_4/Cloth_5/Cloth_5_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_3_Left/Foot_3_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_3_Right/Foot_3_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1
+        weight: 1
+      - path: Armature/Root/IK_Cloth_1/IK_Cloth_1_end
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2
+        weight: 1
+      - path: Armature/Root/IK_Cloth_2/IK_Cloth_2_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: Mesh.001
+        weight: 1
+      - path: Mesh.002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
