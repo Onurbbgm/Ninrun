@@ -1,35 +1,65 @@
 using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
-		private Animator anim;
-		private CharacterController controller;
+    private Animator anim;
+    //private CharacterController controller;
+    private Rigidbody myRigidbody;
 
-		public float speed = 600.0f;
-		public float turnSpeed = 400.0f;
-		private Vector3 moveDirection = Vector3.zero;
-		public float gravity = 20.0f;
+    public float speed = 600.0f;
+    public float turnSpeed = 400.0f;
+    private Vector3 moveDirection = Vector3.zero;
+    public float gravity = 20.0f;
+    public float jumpSpeed = 50.0f;
 
-		void Start () {
-			controller = GetComponent <CharacterController>();
-			anim = gameObject.GetComponentInChildren<Animator>();
-		}
+    void Start()
+    {
+        //controller = GetComponent<CharacterController>();
+        anim = gameObject.GetComponentInChildren<Animator>();
+        myRigidbody = GetComponent<Rigidbody>();
+    }
 
-		void Update (){
-			if (Input.GetKey ("w")) {
-				anim.SetInteger ("AnimationPar", 1);
-			}  else {
-				anim.SetInteger ("AnimationPar", 0);
-			}
+    void Update()
+    {
+        anim.SetInteger("AnimationPar", 1);
+        Movement();
+        //else
+        //{
+        //    anim.SetInteger("AnimationPar", 0);
+        //}
 
-			if(controller.isGrounded){
-				moveDirection = transform.forward * Input.GetAxis("Vertical") * speed;
-			}
+        //Original code
+        //if (controller.isGrounded)
+        //{
+        //    moveDirection = transform.forward * Input.GetAxis("Vertical") * speed;
+        //}
 
-			float turn = Input.GetAxis("Horizontal");
-			transform.Rotate(0, turn * turnSpeed * Time.deltaTime, 0);
-			controller.Move(moveDirection * Time.deltaTime);
-			moveDirection.y -= gravity * Time.deltaTime;
-		}
+        //float turn = Input.GetAxis("Horizontal");
+        //transform.Rotate(0, turn * turnSpeed * Time.deltaTime, 0);
+        //controller.Move(moveDirection * Time.deltaTime);
+        //moveDirection.y -= gravity * Time.deltaTime;
+    }
+
+    void Movement()
+    {
+        float movement = Input.GetAxis("Horizontal");
+        Vector3 playerVelocity = new Vector3(movement*speed, myRigidbody.velocity.y, speed);       
+        Debug.Log(playerVelocity);
+        myRigidbody.velocity = playerVelocity;
+        //moveDirection.y -= gravity * Time.deltaTime;
+        if (Input.GetKeyDown("space"))
+        {
+            Vector3 jumpVelocity = new Vector3(0f, jumpSpeed, 0f);
+            myRigidbody.velocity += jumpVelocity;
+            //TODO: Jummp animation
+            anim.SetInteger("AnimationPar", 0);
+        }
+
+        
+        
+
+    }
+
 }
