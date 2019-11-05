@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     void Movement()
     {
         float movement = Input.GetAxis("Horizontal");
-        Vector3 playerVelocity = new Vector3(movement*speed, myRigidbody.velocity.y, speed);       
+        Vector3 playerVelocity = new Vector3(movement*speed, myRigidbody.velocity.y, speed);
         Debug.Log(playerVelocity);
         myRigidbody.velocity = playerVelocity;
         //moveDirection.y -= gravity * Time.deltaTime;
@@ -56,10 +56,5 @@ public class Player : MonoBehaviour
             //TODO: Jummp animation
             anim.SetInteger("AnimationPar", 0);
         }
-
-        
-        
-
     }
-
 }
