@@ -14,11 +14,14 @@ public class Player : MonoBehaviour
     public float gravity = 20.0f;
     public float jumpSpeed = 50.0f;
 
+    private bool isGrounded;
+
     void Start()
     {
         //controller = GetComponent<CharacterController>();
         anim = gameObject.GetComponentInChildren<Animator>();
         myRigidbody = GetComponent<Rigidbody>();
+        isGrounded = true;
     }
 
     void Update()
@@ -49,12 +52,28 @@ public class Player : MonoBehaviour
         Debug.Log(playerVelocity);
         myRigidbody.velocity = playerVelocity;
         //moveDirection.y -= gravity * Time.deltaTime;
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") && isGrounded)
         {
             Vector3 jumpVelocity = new Vector3(0f, jumpSpeed, 0f);
             myRigidbody.velocity += jumpVelocity;
             //TODO: Jummp animation
             anim.SetInteger("AnimationPar", 0);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == 8 && !isGrounded)
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == 8 && isGrounded)
+        {
+            isGrounded = false;
         }
     }
 }
