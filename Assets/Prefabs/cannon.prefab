@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5362870467104399339}
   - component: {fileID: 159033412131407846}
   - component: {fileID: 697434749667976523}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Support 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 2448783088261706628}
   - component: {fileID: 8727627723184164508}
   - component: {fileID: 342557071191507295}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Middle block 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9124575744850024358}
   - component: {fileID: 8559515313101994191}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5258612904675550645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -191,7 +191,7 @@ Transform:
   - {fileID: 5362870467104399339}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &8559515313101994191
 Animator:
   serializedVersion: 3
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 1348552087399992814}
   - component: {fileID: 8532241983497345553}
   - component: {fileID: 8903576521553895766}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 785705711244867667}
   - component: {fileID: 1287653894360144796}
   - component: {fileID: 1901423647577980750}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Support 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 2652652412590883230}
   - component: {fileID: 5945557181814881025}
   - component: {fileID: 3251873075513571142}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Middle block 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

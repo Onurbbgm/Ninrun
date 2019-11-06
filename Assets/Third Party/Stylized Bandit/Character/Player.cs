@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     public float gravity = 20.0f;
     public float jumpSpeed = 50.0f;
+    public float health = 100.0f;
 
     private bool isGrounded;
 
@@ -22,11 +23,12 @@ public class Player : MonoBehaviour
         anim = gameObject.GetComponentInChildren<Animator>();
         myRigidbody = GetComponent<Rigidbody>();
         isGrounded = true;
+        anim.SetInteger("AnimationPar", 1);
     }
 
     void Update()
     {
-        anim.SetInteger("AnimationPar", 1);
+        
         Movement();
         //else
         //{
@@ -49,16 +51,17 @@ public class Player : MonoBehaviour
     {
         float movement = Input.GetAxis("Horizontal");
         Vector3 playerVelocity = new Vector3(movement*speed, myRigidbody.velocity.y, speed);
-        Debug.Log(playerVelocity);
+        //Debug.Log(playerVelocity);
         myRigidbody.velocity = playerVelocity;
         //moveDirection.y -= gravity * Time.deltaTime;
+        
         if (Input.GetKeyDown("space") && isGrounded)
         {
             Vector3 jumpVelocity = new Vector3(0f, jumpSpeed, 0f);
-            myRigidbody.velocity += jumpVelocity;
-            //TODO: Jummp animation
-            anim.SetInteger("AnimationPar", 0);
+            myRigidbody.velocity += jumpVelocity;            
+            anim.SetInteger("AnimationPar", 3);
         }
+      
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -66,6 +69,15 @@ public class Player : MonoBehaviour
         if(collision.gameObject.layer == 8 && !isGrounded)
         {
             isGrounded = true;
+            anim.SetInteger("AnimationPar", 1);
+        }
+
+        if (collision.gameObject.layer == 12)
+        {
+            GameObject ball = collision.gameObject;
+            health -= ball.GetComponent<Ball>().damage;
+            Destroy(ball);
+            Debug.Log(health);
         }
     }
 
