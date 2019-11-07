@@ -33,17 +33,11 @@ public class Cannon : MonoBehaviour
         float probability = Time.deltaTime * firingFrequency;
         if (Random.value < probability)
         {
-            Vector3 position = transform.GetChild(0).transform.position;
-            //Debug.Log(position);
-            //if (transform.GetChild(0).transform.eulerAngles.y > 70f)
-            //{
-            //    //Shoot higher position
-            //    position.y = transform.GetChild(0).transform.position.y + 1f;
-            //}
-            GameObject ball = Instantiate(ballPrefab, position, Quaternion.identity) as GameObject;
-            Vector3 ballVelocity = new Vector3(0f, -20f, -shootSpeed);
-            //if(transform.)
-            ball.GetComponent<Rigidbody>().velocity = new Vector3(0f, -20f, -shootSpeed);
+            Vector3 position = transform.GetChild(0).transform.position;           
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            GameObject ball = Instantiate(ballPrefab, position, Quaternion.identity) as GameObject;            
+            Vector3 ballVelocity = (player.transform.position - ball.transform.position).normalized * shootSpeed;
+            ball.GetComponent<Rigidbody>().velocity = ballVelocity;
         }
     }
 
@@ -53,27 +47,8 @@ public class Cannon : MonoBehaviour
         Vector3 cannonVelocity = new Vector3(myRigidbody.velocity.x, myRigidbody.velocity.y, player.GetComponent<Player>().speed);
         //Debug.Log(cannonVelocity);
         myRigidbody.velocity = cannonVelocity;
-        //GameObject pos = positions[1];
-
-        //GoTo(transform, transform.position, pos.transform.position, 20.0f);
-        //yield return StartCoroutine(GoTo(transform, transform.position, pos.transform.position, 3.0f));
-
-
-        //if (transform.position.x != positions[1].transform.position.x && !done)
-        //{
-        //    //Debug.Log(transform.position.x+ "-" +positions[1].transform.position.x);
-        //    GoTo(transform.position, positions[1].transform.position, 20.0f);
-        //    if(Mathf.Abs(transform.position.x - positions[1].transform.position.x) < 0.1)
-        //    {
-        //        Debug.Log("estao iguais");
-        //        done = true;
-        //    }                
-        //}
-        //else if (transform.position.x != positions[2].transform.position.x)
-        //{
-        //    Debug.Log("segundo if");
-        //    GoTo(transform.position, positions[2].transform.position, 60.0f);
-        //}
+        transform.LookAt(player.transform);
+        
 
         if (!done)
         {
