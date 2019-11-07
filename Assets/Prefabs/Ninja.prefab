@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3049107404960691526}
   - component: {fileID: 3145430986801704834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048449664250946386}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot_2_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048899473577613942}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth_2_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049425269998910536}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm_1_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048526789971809092}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Arm_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048663441288131338}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm_2_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049191434702727020}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot_1_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049195016228459120}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Foot_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049207734587042460}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Cloth_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048531023042065384}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot_3_Right_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048549353070040930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Cloth_2_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048622751082032232}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot_3_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049208651373606292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot_1_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048578453000210960}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049286254513999376}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm_2_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049138032230563186}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Foot_Right_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049224229469946674}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Arm_Left_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,9 +612,9 @@ GameObject:
   - component: {fileID: 3159258100557067260}
   - component: {fileID: 1785040572}
   - component: {fileID: 1785040571}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ninja
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -668,10 +668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265188bb29a8b8346b1c95b0e42eebcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   turnSpeed: 200
   gravity: 100
   jumpSpeed: 10
+  health: 100
 --- !u!54 &1785040572
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -711,7 +712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049457389044233318}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -752,7 +753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049044103619801512}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth_5_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +783,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048541404950107450}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Cloth_1_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -812,7 +813,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048776987609558386}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm_2_Right_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048614008286894046}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +874,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048885652747770972}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Arm_Right_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +904,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048692657483577014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm_1_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -934,7 +935,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048612580080832204}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3049054437707720876}
   - component: {fileID: 3145928448218227498}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh_Bandana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1072,7 +1073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048967303709786270}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot_3_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1103,7 +1104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048481580807698540}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Foot_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1134,7 +1135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048822567523471480}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,7 +1166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049077730436865410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1195,7 +1196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048633883628059946}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot_2_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1226,7 +1227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049255483812584488}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Foot_Left_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1256,7 +1257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049283196115983912}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1287,7 +1288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048631508351302424}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1318,7 +1319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048496053629427338}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1349,7 +1350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048720407436804686}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm_2_Left_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1379,7 +1380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049204936095658590}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1411,7 +1412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3049285370123347188}
   - component: {fileID: 3145731136635289846}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh_Clothing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1515,7 +1516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049043682166245158}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Cloth_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1546,7 +1547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049296486312966228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot_3_Left_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1576,7 +1577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048446371449233014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IK_Arm_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}

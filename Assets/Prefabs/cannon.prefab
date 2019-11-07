@@ -166,6 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115916974159056517}
   - component: {fileID: 1523575276}
+  - component: {fileID: 2000653740}
   m_Layer: 11
   m_Name: cannon
   m_TagString: Untagged
@@ -211,6 +212,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2000653740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100278230560455830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f430d01a3328bf418b43f73284b410d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootSpeed: 60
+  ballPrefab: {fileID: 9105200375792250485, guid: ae81d5fc85845884b954034538b56ccf,
+    type: 3}
+  firingFrequency: 1
 --- !u!1 &3482241557101469164
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +239,6 @@ GameObject:
   - component: {fileID: 8163683578807358669}
   - component: {fileID: 1555046907642807090}
   - component: {fileID: 1762004358526695541}
-  - component: {fileID: 1704343752780980295}
   m_Layer: 11
   m_Name: Main
   m_TagString: Untagged
@@ -290,22 +306,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1704343752780980295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3482241557101469164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f430d01a3328bf418b43f73284b410d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootSpeed: 60
-  ballPrefab: {fileID: 9105200375792250485, guid: ae81d5fc85845884b954034538b56ccf,
-    type: 3}
-  firingFrequency: 0.5
 --- !u!1 &5612740564418974488
 GameObject:
   m_ObjectHideFlags: 0
