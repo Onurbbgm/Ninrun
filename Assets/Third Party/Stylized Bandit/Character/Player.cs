@@ -26,6 +26,11 @@ public class Player : MonoBehaviour
         anim.SetInteger("AnimationPar", 1);
     }
 
+    //private void FixedUpdate()
+    //{
+    //    IsGrounded();
+    //}
+
     void Update()
     {
         
@@ -58,19 +63,58 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown("space") && isGrounded)
         {
             Vector3 jumpVelocity = new Vector3(0f, jumpSpeed, 0f);
-            myRigidbody.velocity += jumpVelocity;            
+            myRigidbody.velocity += jumpVelocity;
+            isGrounded = false;
+            Debug.Log("lock jump");
             anim.SetInteger("AnimationPar", 3);
         }
-      
+        if (!isGrounded)
+        {
+            IsGrounded();
+        }
+
     }
+
+    void IsGrounded()
+    {
+        isGrounded = false;
+        RaycastHit[] hit;
+        Debug.Log(transform.position);
+        Debug.Log(isGrounded);
+        hit = Physics.RaycastAll(transform.position, Vector3.down, 0.01f);
+        // you can increase RaycastLength and adjust direction for your case
+        foreach (var hited in hit)
+        {
+            if (hited.collider.gameObject == gameObject) //Ignore my character
+                continue;
+            // Don't forget to add tag to your ground
+            if (hited.collider.gameObject.layer == 8)
+            { //Change it to match ground tag
+                isGrounded = true;
+                anim.SetInteger("AnimationPar", 1);
+                Debug.Log("Is touching floor");
+                Debug.Log(isGrounded);
+            }
+            else
+            {
+                isGrounded = false;
+                Debug.Log("Is NOT touching floor");
+            }
+                
+            
+            //Debug.DrawLine(transform.position, hited.point, Color.red);
+        }
+        
+    }    
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.layer == 8 && !isGrounded)
-        {
-            isGrounded = true;
-            anim.SetInteger("AnimationPar", 1);
-        }
+        //if (collision.gameObject.layer == 8 && !isGrounded)
+        //{
+        //    isGrounded = true;
+        //    Debug.Log("Is touching floor");
+        //    anim.SetInteger("AnimationPar", 1);
+        //}
 
         if (collision.gameObject.layer == 12)
         {
@@ -83,9 +127,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.layer == 8 && isGrounded)
-        {
-            isGrounded = false;
-        }
+        //if (collision.gameObject.layer == 8 && isGrounded)
+        //{
+        //    isGrounded = false;
+        //    Debug.Log("Is NOT touching floor");
+        //}
     }
 }

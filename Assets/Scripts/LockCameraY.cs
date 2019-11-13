@@ -28,7 +28,7 @@ public class LockCameraY : CinemachineExtension
             //    transform.eulerAngles += new Vector3(0f, +5f, 0f);
             //}
             var pos = state.RawPosition;
-            pos.y = m_YPosition;
+            //pos.y = m_YPosition;
             pos.x = m_XPosition;
             state.RawPosition = pos;
         }

@@ -671,7 +671,7 @@ MonoBehaviour:
   speed: 5
   turnSpeed: 200
   gravity: 100
-  jumpSpeed: 10
+  jumpSpeed: 7
   health: 100
 --- !u!54 &1785040572
 Rigidbody:
