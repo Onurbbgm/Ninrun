@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         
         Movement();
         CountPointsDistance();
-        Debug.Log(points);
+        //Debug.Log(points);
         //else
         //{
         //    anim.SetInteger("AnimationPar", 0);
