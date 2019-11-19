@@ -18,10 +18,10 @@ TagManager:
   - Player
   - Cannon
   - Ball
-  - 
-  - 
-  - 
-  - 
+  - PlayerFall
+  - Checkpoint
+  - Interactable
+  - FinishLevel
   - 
   - 
   - 

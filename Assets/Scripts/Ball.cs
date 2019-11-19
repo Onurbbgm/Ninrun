@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public float damage = 10f;
+    public int damage = 100;
 
     private GameObject player;
 

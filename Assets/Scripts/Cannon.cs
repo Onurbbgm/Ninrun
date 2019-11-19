@@ -124,4 +124,10 @@ public class Cannon : MonoBehaviour
         //    yield return null;
         //}
     }
+
+    public void ResetCurrentPosition()
+    {
+        currentPos = 0;
+    }
+
 }
