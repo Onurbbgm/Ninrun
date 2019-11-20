@@ -10,7 +10,11 @@ public class FinishLevel : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(LoadNextLevel());
+        if(other.gameObject.layer == 10)
+        {
+            Debug.Log("Touch it");
+            StartCoroutine(LoadNextLevel());
+        }        
     }
 
     private IEnumerator LoadNextLevel()

@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SpeedPowerUp
+  - InvincibilityPowerUp
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Checkpoint
   - Interactable
   - FinishLevel
-  - 
+  - HitPlayer
   - 
   - 
   - 

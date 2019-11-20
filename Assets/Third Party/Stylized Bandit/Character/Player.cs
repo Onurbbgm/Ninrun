@@ -18,13 +18,20 @@ public class Player : MonoBehaviour
     public int points = 0;
     public int pointMultiplier = 2;
 
-
+    private float originalSpeed = 0f;
     private bool isGrounded;
     private Vector3 lastPosition = new Vector3(0f,0f,0f);
+    private bool isInvincible = false;
+    private float timerInvincibility = 0.0f;
+    private bool beginTimerSpeed = false;
+    private float timerSpeed = 0.0f;
+    private float durationSpeed = 0.0f;
+    private float durationInvincibility = 0.0f;
 
     void Start()
     {
         //controller = GetComponent<CharacterController>();
+        originalSpeed = speed;
         anim = gameObject.GetComponentInChildren<Animator>();
         myRigidbody = GetComponent<Rigidbody>();
         isGrounded = true;
@@ -41,6 +48,14 @@ public class Player : MonoBehaviour
         
         Movement();
         CountPointsDistance();
+        if (beginTimerSpeed)
+        {
+            StarTimerSpeed();
+        }
+        if (isInvincible)
+        {
+            StarTimerInvincibility();
+        }
         //Debug.Log(points);
         //else
         //{
@@ -128,19 +143,65 @@ public class Player : MonoBehaviour
         //    anim.SetInteger("AnimationPar", 1);
         //}
 
-        if (collision.gameObject.layer == 12)
+        //if (collision.gameObject.layer == 12)
+        //{
+            
+        //    GameObject ball = collision.gameObject;
+            
+        //    if (points - ball.GetComponent<Ball>().damage > 0)
+        //    {
+        //        points -= ball.GetComponent<Ball>().damage;
+        //    }
+        //    else
+        //    {
+        //        points = 0;
+        //    }
+        //    Destroy(ball);
+        //    //Debug.Log(health);
+        //}
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 17 && !isInvincible)
         {
-            GameObject ball = collision.gameObject;
-            if (points - ball.GetComponent<Ball>().damage > 0)
+            GameObject ball = other.gameObject;
+            if (points - ball.GetComponentInParent<Ball>().damage > 0)
             {
-                points -= ball.GetComponent<Ball>().damage;
+                points -= ball.GetComponentInParent<Ball>().damage;
             }
             else
             {
                 points = 0;
-            }            
-            Destroy(ball);
-            //Debug.Log(health);
+            }
+            Destroy(ball.transform.parent.gameObject);
+        }
+
+        if (other.tag == "InvincibilityPowerUp")
+        {
+            if (!isInvincible)
+            {
+                isInvincible = true;
+                timerInvincibility = 0.0f;
+                durationInvincibility = other.GetComponent<PowerUps>().bonusInvincibilityDuration;
+                Debug.Log("Is Invincible");
+                Destroy(other.gameObject);
+            }
+        }
+
+        if(other.tag == "SpeedPowerUp")
+        {
+            if (!beginTimerSpeed)
+            {
+                beginTimerSpeed = true;
+                timerSpeed = 0.0f;
+                Debug.Log(speed);
+                originalSpeed = speed;
+                speed += other.GetComponent<PowerUps>().bonusSpeed;
+                Debug.Log(speed);
+                durationSpeed = other.GetComponent<PowerUps>().bonusSpeedDuration;
+                Destroy(other.gameObject);
+            }
         }
     }
 
@@ -151,6 +212,32 @@ public class Player : MonoBehaviour
         //    isGrounded = false;
         //    Debug.Log("Is NOT touching floor");
         //}
+    }
+
+    private void StarTimerSpeed()
+    {
+        timerSpeed += Time.deltaTime;
+        float seconds = timerSpeed % 60f;
+        if(seconds >= durationSpeed)
+        {
+            beginTimerSpeed = false;
+            timerSpeed = 0.0f;
+            speed = originalSpeed;
+            Debug.Log(speed);
+            Debug.Log("Time is up extra speed");
+        }
+    }
+
+    private void StarTimerInvincibility()
+    {
+        timerInvincibility += Time.deltaTime;
+        float seconds = timerInvincibility % 60f;
+        if (seconds >= durationInvincibility)
+        {
+            isInvincible = false;
+            timerInvincibility = 0.0f;            
+            Debug.Log("Time is up invincibility");
+        }
     }
 
     public void SetLastPosition(Vector3 newPosition)
@@ -168,6 +255,12 @@ public class Player : MonoBehaviour
         {
             points = 0;
         }
+
+        isInvincible = false;
+        beginTimerSpeed = false;
+        speed = originalSpeed;
+        timerSpeed = 0.0f;
+        timerInvincibility = 0.0f;
 
         var positions = FindObjectsOfType<Follow>();
         float[] distances = new float[positions.Length];
