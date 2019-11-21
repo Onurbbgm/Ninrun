@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpeedPowerUp
   - InvincibilityPowerUp
+  - MagnetPowerUp
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - Interactable
   - FinishLevel
   - HitPlayer
-  - 
-  - 
+  - PlayerMagnet
+  - Points
   - 
   - 
   - 

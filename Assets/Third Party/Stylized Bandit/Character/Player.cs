@@ -18,15 +18,23 @@ public class Player : MonoBehaviour
     public int points = 0;
     public int pointMultiplier = 2;
 
+    private SphereCollider mySphereCollider;
     private float originalSpeed = 0f;
     private bool isGrounded;
     private Vector3 lastPosition = new Vector3(0f,0f,0f);
-    private bool isInvincible = false;
-    private float timerInvincibility = 0.0f;
+
+    private bool isInvincible = false;    
     private bool beginTimerSpeed = false;
+    private bool beginTimerMagnet = false;
+
     private float timerSpeed = 0.0f;
+    private float timerMagnet = 0.0f;
+    private float timerInvincibility = 0.0f;
+
     private float durationSpeed = 0.0f;
     private float durationInvincibility = 0.0f;
+    private float durationMagnet = 0.0f;
+    
 
     void Start()
     {
@@ -34,6 +42,7 @@ public class Player : MonoBehaviour
         originalSpeed = speed;
         anim = gameObject.GetComponentInChildren<Animator>();
         myRigidbody = GetComponent<Rigidbody>();
+        mySphereCollider = GetComponentInChildren<SphereCollider>();
         isGrounded = true;
         anim.SetInteger("AnimationPar", 1);
     }
@@ -55,6 +64,10 @@ public class Player : MonoBehaviour
         if (isInvincible)
         {
             StarTimerInvincibility();
+        }
+        if (beginTimerMagnet)
+        {
+            StartTimerMagnet();
         }
         //Debug.Log(points);
         //else
@@ -162,7 +175,7 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
+    {        
         if(other.gameObject.layer == 17 && !isInvincible)
         {
             GameObject ball = other.gameObject;
@@ -203,6 +216,19 @@ public class Player : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
+
+        if(other.tag == "MagnetPowerUp")
+        {
+            if (!beginTimerMagnet)
+            {
+                beginTimerMagnet = true;
+                timerMagnet = 0.0f;
+                durationMagnet = other.GetComponent<PowerUps>().bonusMagnetDuration;
+                mySphereCollider.radius = other.GetComponent<PowerUps>().bonusMagnetRadius;
+                Debug.Log("Magenet started");
+                Destroy(other.gameObject);
+            }
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -240,6 +266,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void StartTimerMagnet()
+    {
+        timerMagnet += Time.deltaTime;
+        float seconds = timerMagnet % 60f;
+        if (seconds >= durationMagnet)
+        {
+            beginTimerMagnet = false;
+            timerMagnet = 0.0f;
+            mySphereCollider.radius = 0f;
+            Debug.Log("Time is up magnet");
+        }
+    }
+
     public void SetLastPosition(Vector3 newPosition)
     {
         lastPosition = newPosition;
@@ -258,10 +297,12 @@ public class Player : MonoBehaviour
 
         isInvincible = false;
         beginTimerSpeed = false;
+        beginTimerMagnet = false;
         speed = originalSpeed;
+        mySphereCollider.radius = 0f;
         timerSpeed = 0.0f;
         timerInvincibility = 0.0f;
-
+        timerMagnet = 0.0f;
         var positions = FindObjectsOfType<Follow>();
         float[] distances = new float[positions.Length];
         int count = 0;

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3786193913165606920}
   - component: {fileID: 3786193913165606921}
   - component: {fileID: 3786193913165606927}
-  m_Layer: 15
+  m_Layer: 19
   m_Name: PointPickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

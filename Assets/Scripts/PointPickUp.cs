@@ -9,7 +9,15 @@ public class PointPickUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        other.GetComponent<Player>().points += pointValue;
+        if (other.name == "Player")
+        {
+            other.GetComponent<Player>().points += pointValue;
+        }
+        else
+        {
+            other.GetComponentInParent<Player>().points += pointValue;
+        }
+        
     }
 
 }
