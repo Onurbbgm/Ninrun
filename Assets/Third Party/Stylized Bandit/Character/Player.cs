@@ -17,8 +17,14 @@ public class Player : MonoBehaviour
     public int fallPointLost = 100;
     public int points = 0;
     public int pointMultiplier = 2;
+    public float volumeSoundEffects = 1f;
+    public AudioClip hitSound;    
+    public AudioClip restartSound;
+    public AudioClip powerUpSound;
+    public AudioClip jumpSound;
 
     private SphereCollider mySphereCollider;
+    private AudioSource myAudioSource;
     private float originalSpeed = 0f;
     private bool isGrounded;
     private Vector3 lastPosition = new Vector3(0f,0f,0f);
@@ -26,15 +32,18 @@ public class Player : MonoBehaviour
     private bool isInvincible = false;    
     private bool beginTimerSpeed = false;
     private bool beginTimerMagnet = false;
+    private bool levelFinished = false;
+    private bool checkGround = false;
+    private bool countTimeJump = false; 
 
-    private float timerSpeed = 0.0f;
-    private float timerMagnet = 0.0f;
-    private float timerInvincibility = 0.0f;
+    private Coroutine speedTimer = null;
+    private Coroutine invincibilityTimer = null;
+    private Coroutine magnetTimer = null;
 
     private float durationSpeed = 0.0f;
     private float durationInvincibility = 0.0f;
     private float durationMagnet = 0.0f;
-    
+    private float nextJumpTime = 0.2f;
 
     void Start()
     {
@@ -45,6 +54,8 @@ public class Player : MonoBehaviour
         mySphereCollider = GetComponentInChildren<SphereCollider>();
         isGrounded = true;
         anim.SetInteger("AnimationPar", 1);
+        myAudioSource = GetComponent<AudioSource>();
+        levelFinished = false;
     }
 
     //private void FixedUpdate()
@@ -57,18 +68,22 @@ public class Player : MonoBehaviour
         
         Movement();
         CountPointsDistance();
-        if (beginTimerSpeed)
-        {
-            StarTimerSpeed();
-        }
-        if (isInvincible)
-        {
-            StarTimerInvincibility();
-        }
-        if (beginTimerMagnet)
-        {
-            StartTimerMagnet();
-        }
+        //if (beginTimerSpeed)
+        //{
+        //    StartTimerSpeed();
+        //}
+        //if (isInvincible)
+        //{
+        //    StartTimerInvincibility();
+        //}
+        //if (beginTimerMagnet)
+        //{
+        //    StartTimerMagnet();
+        //}
+        //if (countTimeJump)
+        //{
+        //    StartTimerNextJump();
+        //}
         //Debug.Log(points);
         //else
         //{
@@ -100,14 +115,23 @@ public class Player : MonoBehaviour
             Vector3 jumpVelocity = new Vector3(0f, jumpSpeed, 0f);
             myRigidbody.velocity += jumpVelocity;
             isGrounded = false;
-            //Debug.Log("lock jump");
+            //Debug.Log("floor:"+isGrounded);
             anim.SetInteger("AnimationPar", 3);
+            myAudioSource.Stop();
+            AudioSource.PlayClipAtPoint(jumpSound,transform.position, volumeSoundEffects);
+            countTimeJump = true;
+            nextJumpTime = 0.0f;
+            StartCoroutine(StartTimerNextJump());
         }
-        if (!isGrounded)
+        else if (isGrounded && !myAudioSource.isPlaying && !levelFinished)
         {
+            myAudioSource.Play();
+        }        
+        if (!isGrounded && checkGround)
+        {            
             IsGrounded();
         }
-
+        
     }
 
     void CountPointsDistance()
@@ -117,33 +141,51 @@ public class Player : MonoBehaviour
 
     void IsGrounded()
     {
-        isGrounded = false;
-        RaycastHit[] hit;
+        //isGrounded = false;
+        //RaycastHit[] hit;
+        RaycastHit hit;
+        int mask = 1 << LayerMask.NameToLayer("Floor");
         //Debug.Log(transform.position);
         //Debug.Log(isGrounded);
-        hit = Physics.RaycastAll(transform.position, Vector3.down, 0.01f);
-        // you can increase RaycastLength and adjust direction for your case
-        foreach (var hited in hit)
+        //hit = Physics.RaycastAll(transform.position, Vector3.down, 0.01f);
+        
+        //Debug.Log("Layer: "+mask);
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.01f, mask))
         {
-            if (hited.collider.gameObject == gameObject) //Ignore my character
-                continue;
-            // Don't forget to add tag to your ground
-            if (hited.collider.gameObject.layer == 8)
-            { //Change it to match ground tag
-                isGrounded = true;
-                anim.SetInteger("AnimationPar", 1);
-                //Debug.Log("Is touching floor");
-                //Debug.Log(isGrounded);
-            }
-            else
+            //Debug.Log("Is touching floor");
+            isGrounded = true;
+            checkGround = false;
+            //Debug.Log("floot:" + isGrounded);
+            anim.SetInteger("AnimationPar", 1);
+            if (!myAudioSource.isPlaying)
             {
-                isGrounded = false;
-                //Debug.Log("Is NOT touching floor");
-            }
+                myAudioSource.Play();
+            }            
+        }
+       
+        // you can increase RaycastLength and adjust direction for your case
+        //foreach (var hited in hit)
+        //{
+        //    if (hited.collider.gameObject == gameObject) //Ignore my character
+        //        continue;
+        //    // Don't forget to add tag to your ground
+        //    if (hited.collider.gameObject.layer == 8)
+        //    { //Change it to match ground tag
+        //        isGrounded = true;
+        //        anim.SetInteger("AnimationPar", 1);
+        //        myAudioSource.Play();                
+        //        //Debug.Log("Is touching floor");
+        //        //Debug.Log(isGrounded);
+        //    }
+        //    else
+        //    {
+        //        isGrounded = false;
+        //        //Debug.Log("Is NOT touching floor");
+        //    }
                 
             
-            //Debug.DrawLine(transform.position, hited.point, Color.red);
-        }
+        //    //Debug.DrawLine(transform.position, hited.point, Color.red);
+        //}
         
     }        
 
@@ -187,6 +229,7 @@ public class Player : MonoBehaviour
             {
                 points = 0;
             }
+            AudioSource.PlayClipAtPoint(hitSound, transform.position, volumeSoundEffects);
             Destroy(ball.transform.parent.gameObject);
         }
 
@@ -194,12 +237,13 @@ public class Player : MonoBehaviour
         {
             if (!isInvincible)
             {
-                isInvincible = true;
-                timerInvincibility = 0.0f;
+                isInvincible = true;                
                 durationInvincibility = other.GetComponent<PowerUps>().bonusInvincibilityDuration;
-                Debug.Log("Is Invincible");
+                //Debug.Log("Is Invincible");
+                invincibilityTimer = StartCoroutine(StartTimerInvincibility());
                 Destroy(other.gameObject);
             }
+            AudioSource.PlayClipAtPoint(powerUpSound, transform.position, volumeSoundEffects);
         }
 
         if(other.tag == "SpeedPowerUp")
@@ -207,13 +251,14 @@ public class Player : MonoBehaviour
             if (!beginTimerSpeed)
             {
                 beginTimerSpeed = true;
-                timerSpeed = 0.0f;
-                Debug.Log(speed);
+                //Debug.Log(speed);
                 originalSpeed = speed;
                 speed += other.GetComponent<PowerUps>().bonusSpeed;
-                Debug.Log(speed);
+                //Debug.Log(speed);
                 durationSpeed = other.GetComponent<PowerUps>().bonusSpeedDuration;
+                speedTimer = StartCoroutine(StartTimerSpeed());
                 Destroy(other.gameObject);
+                AudioSource.PlayClipAtPoint(powerUpSound, transform.position, volumeSoundEffects);
             }
         }
 
@@ -222,11 +267,12 @@ public class Player : MonoBehaviour
             if (!beginTimerMagnet)
             {
                 beginTimerMagnet = true;
-                timerMagnet = 0.0f;
                 durationMagnet = other.GetComponent<PowerUps>().bonusMagnetDuration;
                 mySphereCollider.radius = other.GetComponent<PowerUps>().bonusMagnetRadius;
-                Debug.Log("Magenet started");
+                //Debug.Log("Magenet started");
+                magnetTimer = StartCoroutine(StartTimerMagnet());
                 Destroy(other.gameObject);
+                AudioSource.PlayClipAtPoint(powerUpSound, transform.position, volumeSoundEffects);
             }
         }
     }
@@ -240,43 +286,76 @@ public class Player : MonoBehaviour
         //}
     }
 
-    private void StarTimerSpeed()
+    private IEnumerator StartTimerNextJump()
     {
-        timerSpeed += Time.deltaTime;
-        float seconds = timerSpeed % 60f;
-        if(seconds >= durationSpeed)
-        {
-            beginTimerSpeed = false;
-            timerSpeed = 0.0f;
-            speed = originalSpeed;
-            Debug.Log(speed);
-            Debug.Log("Time is up extra speed");
-        }
+        yield return new WaitForSecondsRealtime(nextJumpTime);      
+        checkGround = true;
+        countTimeJump = false;
+        //nextJumpTime += Time.deltaTime;
+        ////Debug.Log(nextJumpTime);
+        //float seconds = timerSpeed % 60f;
+        //Debug.Log("seconds "+seconds+" nextJumpTime "+nextJumpTime);
+        //if (seconds >= 0.5f)
+        //{
+        //    nextJumpTime = 0.0f;
+        //    checkGround = true;
+        //    countTimeJump = false;
+        //    Debug.Log("countTimeJump:"+countTimeJump);
+        //}
+        
     }
 
-    private void StarTimerInvincibility()
+    private IEnumerator StartTimerSpeed()
     {
-        timerInvincibility += Time.deltaTime;
-        float seconds = timerInvincibility % 60f;
-        if (seconds >= durationInvincibility)
-        {
-            isInvincible = false;
-            timerInvincibility = 0.0f;            
-            Debug.Log("Time is up invincibility");
-        }
+        Debug.Log("start timer speed");
+        //timerSpeed += Time.deltaTime;
+        //float seconds = timerSpeed % 60f;
+        yield return new WaitForSecondsRealtime(durationSpeed);
+        Debug.Log("end timer speed");
+        beginTimerSpeed = false;
+        speed = originalSpeed;
+        //if(seconds >= durationSpeed)
+        //{
+        //    beginTimerSpeed = false;
+        //    timerSpeed = 0.0f;
+        //    speed = originalSpeed;
+        //    //Debug.Log(speed);
+        //    //Debug.Log("Time is up extra speed");
+        //}
     }
 
-    private void StartTimerMagnet()
+    private IEnumerator StartTimerInvincibility()
     {
-        timerMagnet += Time.deltaTime;
-        float seconds = timerMagnet % 60f;
-        if (seconds >= durationMagnet)
-        {
-            beginTimerMagnet = false;
-            timerMagnet = 0.0f;
-            mySphereCollider.radius = 0f;
-            Debug.Log("Time is up magnet");
-        }
+        Debug.Log("start timer invi");
+        yield return new WaitForSecondsRealtime(durationInvincibility);
+        isInvincible = false;
+        Debug.Log("stop timer invi");
+        //timerInvincibility += Time.deltaTime;
+        //float seconds = timerInvincibility % 60f;
+        //if (seconds >= durationInvincibility)
+        ////{
+        //    isInvincible = false;
+        //    timerInvincibility = 0.0f;            
+        //    //Debug.Log("Time is up invincibility");
+        //}
+    }
+
+    private IEnumerator StartTimerMagnet()
+    {
+        Debug.Log("start timer mag");
+        yield return new WaitForSecondsRealtime(durationMagnet);
+        Debug.Log("stop timer magn");
+        beginTimerMagnet = false;
+        mySphereCollider.radius = 0f;
+        //timerMagnet += Time.deltaTime;
+        //float seconds = timerMagnet % 60f;
+        //if (seconds >= durationMagnet)
+        //{
+        //    beginTimerMagnet = false;
+        //    timerMagnet = 0.0f;
+        //    mySphereCollider.radius = 0f;
+        //    //Debug.Log("Time is up magnet");
+        //}
     }
 
     public void SetLastPosition(Vector3 newPosition)
@@ -294,15 +373,19 @@ public class Player : MonoBehaviour
         {
             points = 0;
         }
-
+        myAudioSource.Stop();
         isInvincible = false;
         beginTimerSpeed = false;
         beginTimerMagnet = false;
+        isGrounded = true;
+        checkGround = false;
+        countTimeJump = false;
+        //nextJumpTime = 0.3f;
         speed = originalSpeed;
-        mySphereCollider.radius = 0f;
-        timerSpeed = 0.0f;
-        timerInvincibility = 0.0f;
-        timerMagnet = 0.0f;
+        mySphereCollider.radius = 0f;        
+        StopCoroutine(speedTimer);
+        StopCoroutine(invincibilityTimer);
+        StopCoroutine(magnetTimer);
         var positions = FindObjectsOfType<Follow>();
         float[] distances = new float[positions.Length];
         int count = 0;
@@ -313,6 +396,7 @@ public class Player : MonoBehaviour
         }
 
         transform.position = lastPosition;
+        AudioSource.PlayClipAtPoint(restartSound, transform.position, volumeSoundEffects);
         count = 0;
         foreach (var pos in positions)
         {
@@ -323,6 +407,12 @@ public class Player : MonoBehaviour
         var cannon = FindObjectOfType<Cannon>();
         cannon.transform.position = positions[1].transform.position;
         cannon.ResetCurrentPosition();
+    }
+
+    public void FinishLevel()
+    {
+        myAudioSource.Stop();
+        levelFinished = true;
     }
 
 }

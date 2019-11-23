@@ -59,3 +59,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelLoadDelay: 2
   levelSlowMode: 0.2
+  finishSound: {fileID: 8300000, guid: 080114b1906f2e64386f6d4a7b9c3eac, type: 3}

@@ -8,11 +8,16 @@ public class FinishLevel : MonoBehaviour
     [SerializeField] float levelLoadDelay = 2f;
     [SerializeField] float levelSlowMode = 0.2f;
 
+    public AudioClip finishSound;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == 10)
         {
-            Debug.Log("Touch it");
+            //Debug.Log("Touch it");
+            //other.gameObject.GetComponent<AudioSource>().Stop();
+            other.gameObject.GetComponent<Player>().FinishLevel();
+            AudioSource.PlayClipAtPoint(finishSound, transform.position, 1f);
             StartCoroutine(LoadNextLevel());
         }        
     }

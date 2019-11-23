@@ -345,3 +345,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointValue: 100
+  pickUpSound: {fileID: 8300000, guid: b2e3da2ecf93e004da890f1eec46660e, type: 3}
