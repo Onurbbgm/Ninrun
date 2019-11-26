@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         mySphereCollider = GetComponentInChildren<SphereCollider>();
         isGrounded = true;
         anim.SetInteger("AnimationPar", 1);
-        myAudioSource = GetComponent<AudioSource>();
+        myAudioSource = GetComponent<AudioSource>();        
         levelFinished = false;
     }
 
@@ -254,6 +254,7 @@ public class Player : MonoBehaviour
                 //Debug.Log(speed);
                 originalSpeed = speed;
                 speed += other.GetComponent<PowerUps>().bonusSpeed;
+                myAudioSource.pitch = 0.89f;
                 //Debug.Log(speed);
                 durationSpeed = other.GetComponent<PowerUps>().bonusSpeedDuration;
                 speedTimer = StartCoroutine(StartTimerSpeed());
@@ -314,6 +315,7 @@ public class Player : MonoBehaviour
         Debug.Log("end timer speed");
         beginTimerSpeed = false;
         speed = originalSpeed;
+        myAudioSource.pitch = 0.80f;
         //if(seconds >= durationSpeed)
         //{
         //    beginTimerSpeed = false;
@@ -382,7 +384,8 @@ public class Player : MonoBehaviour
         countTimeJump = false;
         //nextJumpTime = 0.3f;
         speed = originalSpeed;
-        mySphereCollider.radius = 0f;        
+        mySphereCollider.radius = 0f;
+        myAudioSource.pitch = 0.80f;
         StopCoroutine(speedTimer);
         StopCoroutine(invincibilityTimer);
         StopCoroutine(magnetTimer);
