@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +12,8 @@ public class FinishLevel : MonoBehaviour
 
     public AudioClip finishSound;
 
+    
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == 10)
@@ -18,6 +22,7 @@ public class FinishLevel : MonoBehaviour
             //other.gameObject.GetComponent<AudioSource>().Stop();
             other.gameObject.GetComponent<Player>().FinishLevel();
             AudioSource.PlayClipAtPoint(finishSound, transform.position, 1f);
+            SaveGame(other.gameObject.GetComponent<Player>().points);
             StartCoroutine(LoadNextLevel());
         }        
     }
@@ -31,4 +36,38 @@ public class FinishLevel : MonoBehaviour
         Destroy(FindObjectOfType<ScenePersist>());
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
+
+    private void SaveGame(int points)
+    {
+        SaveData save = CreateSaveGame(points);
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
+        bf.Serialize(file, save);
+        file.Close();
+    }
+
+    private SaveData CreateSaveGame(int points)
+    {
+        SaveData save = new SaveData();
+        if (File.Exists(Application.persistentDataPath + "/gamesave.save"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+            save = (SaveData)bf.Deserialize(file);
+            file.Close();            
+        }
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+        save.level = currentLevel + 1;
+        if (save.scoreLevel.ContainsKey(currentLevel) && save.scoreLevel[currentLevel] < points)
+        {
+            save.scoreLevel.Add(currentLevel, points);
+        }
+        else if (!save.scoreLevel.ContainsKey(currentLevel))
+        {
+            save.scoreLevel.Add(currentLevel, points);
+        }
+        
+        return save;
+    }
+
 }

@@ -386,9 +386,18 @@ public class Player : MonoBehaviour
         speed = originalSpeed;
         mySphereCollider.radius = 0f;
         myAudioSource.pitch = 0.80f;
-        StopCoroutine(speedTimer);
-        StopCoroutine(invincibilityTimer);
-        StopCoroutine(magnetTimer);
+        if(speedTimer != null)
+        {
+            StopCoroutine(speedTimer);
+        }
+        if(invincibilityTimer != null)
+        {
+            StopCoroutine(invincibilityTimer);
+        }
+        if(magnetTimer != null)
+        {
+            StopCoroutine(magnetTimer);
+        }        
         var positions = FindObjectsOfType<Follow>();
         float[] distances = new float[positions.Length];
         int count = 0;

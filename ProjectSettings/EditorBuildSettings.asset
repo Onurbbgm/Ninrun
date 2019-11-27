@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/How To Play.unity
     guid: 58c99ca06f022ba41b5da54a50782d91
+  - enabled: 1
+    path: Assets/Scenes/Scores.unity
+    guid: d8fe580a4dbdcf24192c29b889d6939c
   m_configObjects: {}
