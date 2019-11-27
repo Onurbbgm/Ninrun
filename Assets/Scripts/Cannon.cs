@@ -13,11 +13,14 @@ public class Cannon : MonoBehaviour
     private Rigidbody myRigidbody;
     private int currentPos = 0;
     private bool done = false;
-    private float smothSpeed = 20f; 
+    private float smothSpeed = 20f;
+
+    private GameObject pausePanel;
 
     // Start is called before the first frame update
     void Start()
     {
+        pausePanel = GameObject.FindGameObjectWithTag("Pause Screen");
         myRigidbody = GetComponent<Rigidbody>();
     }
 
@@ -43,6 +46,10 @@ public class Cannon : MonoBehaviour
 
     void Move()
     {
+        if (pausePanel.activeInHierarchy)
+        {
+            return;
+        }
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector3 cannonVelocity = new Vector3(myRigidbody.velocity.x, myRigidbody.velocity.y, player.GetComponent<Player>().speed);
         //Debug.Log(cannonVelocity);

@@ -44,9 +44,14 @@ public class Player : MonoBehaviour
     private float durationInvincibility = 0.0f;
     private float durationMagnet = 0.0f;
     private float nextJumpTime = 0.2f;
+    
+    private GameObject pausePanel;    
 
     void Start()
     {
+        Time.timeScale = 1;
+        pausePanel = GameObject.FindGameObjectWithTag("Pause Screen");
+        pausePanel.SetActive(false);
         //controller = GetComponent<CharacterController>();
         originalSpeed = speed;
         anim = gameObject.GetComponentInChildren<Animator>();
@@ -68,6 +73,17 @@ public class Player : MonoBehaviour
         
         Movement();
         CountPointsDistance();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!pausePanel.activeInHierarchy)
+            {
+                PauseGame();
+            }
+            else if (pausePanel.activeInHierarchy)
+            {
+                ContinueGame();
+            }
+        }
         //if (beginTimerSpeed)
         //{
         //    StartTimerSpeed();
@@ -102,6 +118,23 @@ public class Player : MonoBehaviour
         //moveDirection.y -= gravity * Time.deltaTime;
     }
 
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
+        myAudioSource.Stop();
+        Debug.Log("Paused");
+        
+    }
+
+    void ContinueGame()
+    {
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
+        myAudioSource.Play();
+        Debug.Log("Continued");
+    }
+
     void Movement()
     {
         float movement = Input.GetAxis("Horizontal");
@@ -123,7 +156,7 @@ public class Player : MonoBehaviour
             nextJumpTime = 0.0f;
             StartCoroutine(StartTimerNextJump());
         }
-        else if (isGrounded && !myAudioSource.isPlaying && !levelFinished)
+        else if (isGrounded && !myAudioSource.isPlaying && !levelFinished && !pausePanel.activeInHierarchy)
         {
             myAudioSource.Play();
         }        
@@ -289,7 +322,11 @@ public class Player : MonoBehaviour
 
     private IEnumerator StartTimerNextJump()
     {
-        yield return new WaitForSecondsRealtime(nextJumpTime);      
+        while (pausePanel.activeInHierarchy)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(nextJumpTime);      
         checkGround = true;
         countTimeJump = false;
         //nextJumpTime += Time.deltaTime;
@@ -308,10 +345,11 @@ public class Player : MonoBehaviour
 
     private IEnumerator StartTimerSpeed()
     {
+        
         Debug.Log("start timer speed");
         //timerSpeed += Time.deltaTime;
         //float seconds = timerSpeed % 60f;
-        yield return new WaitForSecondsRealtime(durationSpeed);
+        yield return new WaitForSeconds(durationSpeed);
         Debug.Log("end timer speed");
         beginTimerSpeed = false;
         speed = originalSpeed;
@@ -328,8 +366,9 @@ public class Player : MonoBehaviour
 
     private IEnumerator StartTimerInvincibility()
     {
+        
         Debug.Log("start timer invi");
-        yield return new WaitForSecondsRealtime(durationInvincibility);
+        yield return new WaitForSeconds(durationInvincibility);
         isInvincible = false;
         Debug.Log("stop timer invi");
         //timerInvincibility += Time.deltaTime;
@@ -345,7 +384,7 @@ public class Player : MonoBehaviour
     private IEnumerator StartTimerMagnet()
     {
         Debug.Log("start timer mag");
-        yield return new WaitForSecondsRealtime(durationMagnet);
+        yield return new WaitForSeconds(durationMagnet);
         Debug.Log("stop timer magn");
         beginTimerMagnet = false;
         mySphereCollider.radius = 0f;
