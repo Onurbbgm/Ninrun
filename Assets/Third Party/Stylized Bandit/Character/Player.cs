@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
             myRigidbody.velocity += jumpVelocity;
             isGrounded = false;
             //Debug.Log("floor:"+isGrounded);
-            anim.SetInteger("AnimationPar", 3);
+            anim.SetTrigger("Jump");            
             myAudioSource.Stop();
             AudioSource.PlayClipAtPoint(jumpSound,transform.position, volumeSoundEffects);
             countTimeJump = true;
@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
             isGrounded = true;
             checkGround = false;
             //Debug.Log("floot:" + isGrounded);
-            anim.SetInteger("AnimationPar", 1);
+            //anim.SetInteger("AnimationPar", 1);
             if (!myAudioSource.isPlaying)
             {
                 myAudioSource.Play();
@@ -222,32 +222,7 @@ public class Player : MonoBehaviour
         
     }        
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        //if (collision.gameObject.layer == 8 && !isGrounded)
-        //{
-        //    isGrounded = true;
-        //    Debug.Log("Is touching floor");
-        //    anim.SetInteger("AnimationPar", 1);
-        //}
-
-        //if (collision.gameObject.layer == 12)
-        //{
-            
-        //    GameObject ball = collision.gameObject;
-            
-        //    if (points - ball.GetComponent<Ball>().damage > 0)
-        //    {
-        //        points -= ball.GetComponent<Ball>().damage;
-        //    }
-        //    else
-        //    {
-        //        points = 0;
-        //    }
-        //    Destroy(ball);
-        //    //Debug.Log(health);
-        //}
-    }
+  
 
     private void OnTriggerEnter(Collider other)
     {        
@@ -273,9 +248,9 @@ public class Player : MonoBehaviour
                 isInvincible = true;                
                 durationInvincibility = other.GetComponent<PowerUps>().bonusInvincibilityDuration;
                 //Debug.Log("Is Invincible");
-                invincibilityTimer = StartCoroutine(StartTimerInvincibility());
-                Destroy(other.gameObject);
+                invincibilityTimer = StartCoroutine(StartTimerInvincibility());               
             }
+            Destroy(other.gameObject);
             AudioSource.PlayClipAtPoint(powerUpSound, transform.position, volumeSoundEffects);
         }
 
@@ -290,10 +265,10 @@ public class Player : MonoBehaviour
                 myAudioSource.pitch = 0.89f;
                 //Debug.Log(speed);
                 durationSpeed = other.GetComponent<PowerUps>().bonusSpeedDuration;
-                speedTimer = StartCoroutine(StartTimerSpeed());
-                Destroy(other.gameObject);
-                AudioSource.PlayClipAtPoint(powerUpSound, transform.position, volumeSoundEffects);
+                speedTimer = StartCoroutine(StartTimerSpeed());                
             }
+            Destroy(other.gameObject);
+            AudioSource.PlayClipAtPoint(powerUpSound, transform.position, volumeSoundEffects);
         }
 
         if(other.tag == "MagnetPowerUp")
@@ -304,22 +279,13 @@ public class Player : MonoBehaviour
                 durationMagnet = other.GetComponent<PowerUps>().bonusMagnetDuration;
                 mySphereCollider.radius = other.GetComponent<PowerUps>().bonusMagnetRadius;
                 //Debug.Log("Magenet started");
-                magnetTimer = StartCoroutine(StartTimerMagnet());
-                Destroy(other.gameObject);
-                AudioSource.PlayClipAtPoint(powerUpSound, transform.position, volumeSoundEffects);
+                magnetTimer = StartCoroutine(StartTimerMagnet());                
             }
+            Destroy(other.gameObject);
+            AudioSource.PlayClipAtPoint(powerUpSound, transform.position, volumeSoundEffects);
         }
     }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        //if (collision.gameObject.layer == 8 && isGrounded)
-        //{
-        //    isGrounded = false;
-        //    Debug.Log("Is NOT touching floor");
-        //}
-    }
-
+    
     private IEnumerator StartTimerNextJump()
     {
         while (pausePanel.activeInHierarchy)

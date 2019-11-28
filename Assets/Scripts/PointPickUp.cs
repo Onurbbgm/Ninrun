@@ -11,8 +11,9 @@ public class PointPickUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        if (other.name == "Player")
+        if (other.tag == "Player")
         {
+            Debug.Log("pegou ponto");
             other.GetComponent<Player>().points += pointValue;
             AudioSource.PlayClipAtPoint(pickUpSound, other.gameObject.transform.position, 1f);
         }
