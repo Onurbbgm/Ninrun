@@ -6,6 +6,7 @@ public class PointPickUp : MonoBehaviour
 {
     public int pointValue = 100;
     public AudioClip pickUpSound;
+    public float spinningSpeed = 200;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +22,11 @@ public class PointPickUp : MonoBehaviour
             AudioSource.PlayClipAtPoint(pickUpSound, other.gameObject.transform.position, 1f);
         }
         
+    }
+
+    void FixedUpdate()
+    {
+        transform.Rotate(Vector3.forward * spinningSpeed * Time.fixedDeltaTime);
     }
 
 }

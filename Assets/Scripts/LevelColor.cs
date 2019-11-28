@@ -22,6 +22,8 @@ public class LevelColor : MonoBehaviour
 
     public float transitionDuration = 200f;
 
+    public Material levelMaterial;
+
     private Color lastBackgroundColor;
 
     private float transitionDelta = 0f;
@@ -32,6 +34,7 @@ public class LevelColor : MonoBehaviour
         currentPair = Random.Range(0, colorPairs.GetUpperBound(0) + 1);
 
         mainCamera.backgroundColor = colorPairs[currentPair,0];
+        levelMaterial.SetVector("_Level_Color", GetLevelColor());
     }
 
     public void ChangeColor()
@@ -43,6 +46,7 @@ public class LevelColor : MonoBehaviour
         }
         lastBackgroundColor = mainCamera.backgroundColor;
         transitionDelta = 0f;
+        levelMaterial.SetVector("_Level_Color", GetLevelColor());
     }
 
     // Returns current level/floor color based on Sky color
