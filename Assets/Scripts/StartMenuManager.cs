@@ -49,6 +49,16 @@ public class StartMenuManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void QuitLevel()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void NewGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

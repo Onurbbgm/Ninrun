@@ -30,7 +30,7 @@ public class FinishLevel : MonoBehaviour
     private IEnumerator LoadNextLevel()
     {
         Time.timeScale = levelSlowMode;
-        yield return new WaitForSecondsRealtime(levelLoadDelay);
+        yield return new WaitForSeconds(levelLoadDelay);
         Time.timeScale = 1f;
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         Destroy(FindObjectOfType<ScenePersist>());
@@ -60,7 +60,7 @@ public class FinishLevel : MonoBehaviour
         save.level = currentLevel + 1;
         if (save.scoreLevel.ContainsKey(currentLevel) && save.scoreLevel[currentLevel] < points)
         {
-            save.scoreLevel.Add(currentLevel, points);
+            save.scoreLevel[currentLevel] = points;
         }
         else if (!save.scoreLevel.ContainsKey(currentLevel))
         {
