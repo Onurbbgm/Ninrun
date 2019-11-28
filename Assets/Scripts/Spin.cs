@@ -8,6 +8,6 @@ public class Spin : MonoBehaviour
     
     void FixedUpdate()
     {
-        transform.Rotate(Vector3.up * 200f * Time.fixedDeltaTime);
+        transform.Rotate(Vector3.up * rotationSpeed * Time.fixedDeltaTime);
     }
 }
