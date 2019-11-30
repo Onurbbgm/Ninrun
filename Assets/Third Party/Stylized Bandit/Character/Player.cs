@@ -163,6 +163,7 @@ public class Player : MonoBehaviour
         if (!isGrounded && checkGround)
         {            
             IsGrounded();
+            //Debug.Log("NOT grounded");
         }
         
     }
@@ -177,25 +178,27 @@ public class Player : MonoBehaviour
         //isGrounded = false;
         //RaycastHit[] hit;
         RaycastHit hit;
+       
         int mask = 1 << LayerMask.NameToLayer("Floor");
         //Debug.Log(transform.position);
         //Debug.Log(isGrounded);
         //hit = Physics.RaycastAll(transform.position, Vector3.down, 0.01f);
         
         //Debug.Log("Layer: "+mask);
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.01f, mask))
+        if (Physics.Raycast(transform.position + Vector3.up * 0.01f, Vector3.down, out hit, 0.12f, mask))
         {
             //Debug.Log("Is touching floor");
             isGrounded = true;
             checkGround = false;
-            //Debug.Log("floot:" + isGrounded);
+            //Debug.Log("is grounded");
             //anim.SetInteger("AnimationPar", 1);
             if (!myAudioSource.isPlaying)
             {
                 myAudioSource.Play();
-            }            
+            }
         }
-       
+        
+        Debug.DrawLine(transform.position, hit.point, Color.red);
         // you can increase RaycastLength and adjust direction for your case
         //foreach (var hited in hit)
         //{
@@ -215,14 +218,29 @@ public class Player : MonoBehaviour
         //        isGrounded = false;
         //        //Debug.Log("Is NOT touching floor");
         //    }
-                
-            
+
+
         //    //Debug.DrawLine(transform.position, hited.point, Color.red);
         //}
-        
-    }        
 
-  
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            //Debug.Log("is NOT on the ground");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            //Debug.Log("IS on the ground");
+            isGrounded = true;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {        
@@ -422,8 +440,12 @@ public class Player : MonoBehaviour
             count++;
         }
         var cannon = FindObjectOfType<Cannon>();
-        cannon.transform.position = positions[1].transform.position;
-        cannon.ResetCurrentPosition();
+        if (cannon)
+        {
+            cannon.transform.position = positions[1].transform.position;
+            cannon.ResetCurrentPosition();
+        }
+        
     }
 
     public void FinishLevel()

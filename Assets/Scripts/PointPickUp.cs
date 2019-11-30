@@ -13,7 +13,7 @@ public class PointPickUp : MonoBehaviour
         Destroy(gameObject);
         if (other.tag == "Player")
         {
-            Debug.Log("pegou ponto");
+            //Debug.Log("pegou ponto");
             other.GetComponent<Player>().points += pointValue;
             AudioSource.PlayClipAtPoint(pickUpSound, other.gameObject.transform.position, 1f);
         }
