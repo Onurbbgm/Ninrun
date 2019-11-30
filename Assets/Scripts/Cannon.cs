@@ -21,6 +21,10 @@ public class Cannon : MonoBehaviour
     void Start()
     {
         pausePanel = GameObject.FindGameObjectWithTag("Pause Screen");
+        if(pausePanel == null)
+        {
+            pausePanel = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().pausePanel;
+        }
         myRigidbody = GetComponent<Rigidbody>();
     }
 
@@ -45,7 +49,7 @@ public class Cannon : MonoBehaviour
     }
 
     void Move()
-    {
+    {       
         if (pausePanel.activeInHierarchy)
         {
             return;

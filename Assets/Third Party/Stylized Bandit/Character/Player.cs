@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     private float durationMagnet = 0.0f;
     private float nextJumpTime = 0.2f;
     
-    private GameObject pausePanel;    
+    public GameObject pausePanel;    
 
     void Start()
     {
@@ -438,7 +438,7 @@ public class Player : MonoBehaviour
         int count = 0;
         foreach(var pos in positions)
         {
-            distances[count] = Mathf.Abs(Mathf.Abs(pos.transform.position.z) - Mathf.Abs(transform.position.z));
+            distances[count] = Mathf.Abs(pos.transform.position.z - transform.position.z);          
             count++;
         }
 
