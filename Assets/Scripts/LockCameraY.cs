@@ -27,10 +27,10 @@ public class LockCameraY : CinemachineExtension
             //{
             //    transform.eulerAngles += new Vector3(0f, +5f, 0f);
             //}
-            var pos = state.RawPosition;
+            //var pos = state.RawPosition;
             //pos.y = m_YPosition;
-            pos.x = m_XPosition;
-            state.RawPosition = pos;
+            //pos.x = m_XPosition;
+            //state.RawPosition = pos;
         }
     }
 }

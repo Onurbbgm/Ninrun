@@ -30,7 +30,7 @@ public class FinishLevel : MonoBehaviour
     private IEnumerator LoadNextLevel()
     {
         Time.timeScale = levelSlowMode;
-        yield return new WaitForSeconds(levelLoadDelay);
+        yield return new WaitForSecondsRealtime(levelLoadDelay);
         Time.timeScale = 1f;
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         Destroy(FindObjectOfType<ScenePersist>());

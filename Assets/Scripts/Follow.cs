@@ -19,4 +19,10 @@ public class Follow : MonoBehaviour
         Vector3 followVelocity = new Vector3(myRigidbody.velocity.x, myRigidbody.velocity.y, player.GetComponent<Player>().speed);
         myRigidbody.velocity = followVelocity;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 1);
+    }
+
 }

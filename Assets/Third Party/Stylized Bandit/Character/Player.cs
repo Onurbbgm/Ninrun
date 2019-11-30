@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     private Coroutine speedTimer = null;
     private Coroutine invincibilityTimer = null;
     private Coroutine magnetTimer = null;
+    private Coroutine nextJump = null;
 
     private float durationSpeed = 0.0f;
     private float durationInvincibility = 0.0f;
@@ -154,7 +155,8 @@ public class Player : MonoBehaviour
             AudioSource.PlayClipAtPoint(jumpSound,transform.position, volumeSoundEffects);
             countTimeJump = true;
             nextJumpTime = 0.0f;
-            StartCoroutine(StartTimerNextJump());
+            nextJump = StartCoroutine(StartTimerNextJump());
+            
         }
         else if (isGrounded && !myAudioSource.isPlaying && !levelFinished && !pausePanel.activeInHierarchy)
         {
@@ -185,9 +187,9 @@ public class Player : MonoBehaviour
         //hit = Physics.RaycastAll(transform.position, Vector3.down, 0.01f);
         
         //Debug.Log("Layer: "+mask);
-        if (Physics.Raycast(transform.position + Vector3.up * 0.01f, Vector3.down, out hit, 0.12f, mask))
+        if (Physics.Raycast(transform.position + Vector3.up * 0.01f, Vector3.down, out hit, 0.01f, mask))
         {
-            //Debug.Log("Is touching floor");
+            Debug.Log("Is touching floor RAYCAST");
             isGrounded = true;
             checkGround = false;
             //Debug.Log("is grounded");
@@ -229,7 +231,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
-            //Debug.Log("is NOT on the ground");
+            Debug.Log("is NOT on the ground");
         }
     }
 
@@ -237,8 +239,14 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
-            //Debug.Log("IS on the ground");
+            Debug.Log("IS on the ground");
             isGrounded = true;
+            if (nextJump != null)
+            {
+                StopCoroutine(nextJump);
+                checkGround = false;
+                Debug.Log("STOPPED");
+            }
         }
     }
 

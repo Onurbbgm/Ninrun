@@ -675,7 +675,7 @@ MonoBehaviour:
   gravity: 100
   jumpSpeed: 7
   health: 100
-  fallPointLost: 100
+  fallPointLost: 500
   points: 0
   pointMultiplier: 2
   volumeSoundEffects: 1
