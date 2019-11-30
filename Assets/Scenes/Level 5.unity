@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7090,6 +7090,11 @@ PrefabInstance:
       propertyPath: field of view
       value: 58
       objectReference: {fileID: 0}
+    - target: {fileID: -7222935256311295629, guid: eb2c80796d0d6a344bbaec2a47f800b0,
+        type: 3}
+      propertyPath: levelMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: a18ff98f4f1042c4689e795f879c11d5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb2c80796d0d6a344bbaec2a47f800b0, type: 3}
 --- !u!43 &664673634
@@ -8865,7 +8870,7 @@ PrefabInstance:
     - target: {fileID: 7429608407068337156, guid: c5e8b5cadb8361747bf55eb64667c5d3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 7429608407068337156, guid: c5e8b5cadb8361747bf55eb64667c5d3,
         type: 3}
@@ -10711,7 +10716,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53620
+  m_Name: pb_Mesh184388
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

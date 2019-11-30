@@ -428,7 +428,11 @@ public class Player : MonoBehaviour
         if(magnetTimer != null)
         {
             StopCoroutine(magnetTimer);
-        }        
+        }   
+        if(nextJump != null)
+        {
+            StopCoroutine(nextJump);
+        }
         var positions = FindObjectsOfType<Follow>();
         float[] distances = new float[positions.Length];
         int count = 0;
