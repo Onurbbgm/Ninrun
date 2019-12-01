@@ -21,7 +21,7 @@ public class Cannon : MonoBehaviour
     void Start()
     {
         pausePanel = GameObject.FindGameObjectWithTag("Pause Screen");
-        if(pausePanel == null)
+        if (pausePanel == null)
         {
             pausePanel = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().pausePanel;
         }

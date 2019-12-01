@@ -45,12 +45,15 @@ public class Player : MonoBehaviour
     private float durationInvincibility = 0.0f;
     private float durationMagnet = 0.0f;
     private float nextJumpTime = 0.2f;
-    
+    private ParticleSystem magnetParticle;
+
     public GameObject pausePanel;    
 
     void Start()
     {
         Time.timeScale = 1;
+        magnetParticle = GetComponent<ParticleSystem>();
+        magnetParticle.Stop();
         pausePanel = GameObject.FindGameObjectWithTag("Pause Screen");
         pausePanel.SetActive(false);
         //controller = GetComponent<CharacterController>();
@@ -273,6 +276,7 @@ public class Player : MonoBehaviour
             {
                 isInvincible = true;                
                 durationInvincibility = other.GetComponent<PowerUps>().bonusInvincibilityDuration;
+                
                 //Debug.Log("Is Invincible");
                 invincibilityTimer = StartCoroutine(StartTimerInvincibility());               
             }
@@ -305,6 +309,7 @@ public class Player : MonoBehaviour
                 durationMagnet = other.GetComponent<PowerUps>().bonusMagnetDuration;
                 mySphereCollider.radius = other.GetComponent<PowerUps>().bonusMagnetRadius;
                 //Debug.Log("Magenet started");
+                magnetParticle.Play();
                 magnetTimer = StartCoroutine(StartTimerMagnet());                
             }
             Destroy(other.gameObject);
@@ -380,6 +385,7 @@ public class Player : MonoBehaviour
         Debug.Log("stop timer magn");
         beginTimerMagnet = false;
         mySphereCollider.radius = 0f;
+        magnetParticle.Stop();
         //timerMagnet += Time.deltaTime;
         //float seconds = timerMagnet % 60f;
         //if (seconds >= durationMagnet)
@@ -432,6 +438,10 @@ public class Player : MonoBehaviour
         if(nextJump != null)
         {
             StopCoroutine(nextJump);
+        }
+        if (magnetParticle.isPlaying)
+        {            
+            magnetParticle.Stop(true);
         }
         var positions = FindObjectsOfType<Follow>();
         float[] distances = new float[positions.Length];
