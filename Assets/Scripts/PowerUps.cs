@@ -12,6 +12,13 @@ public class PowerUps : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Rotate((Vector3.up + Vector3.forward + Vector3.right) * 200f * Time.fixedDeltaTime);
+        if (gameObject.CompareTag("MagnetPowerUp"))
+        {
+            transform.Rotate(Vector3.up * 200f * Time.fixedDeltaTime);
+        }
+        else
+        {
+            transform.Rotate((Vector3.up + Vector3.forward + Vector3.right) * 200f * Time.fixedDeltaTime);
+        }
     }
 }
