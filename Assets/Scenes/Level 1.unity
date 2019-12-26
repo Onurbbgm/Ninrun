@@ -920,6 +920,7 @@ MonoBehaviour:
   - {x: 1, y: 1, z: -1}
   - {x: 0, y: 0, z: -1}
   - {x: 1, y: 0, z: -1}
+
   - {x: 0, y: 0, z: 6}
   - {x: 1, y: 0, z: 6}
   - {x: 0, y: 0, z: 6}
@@ -994,21 +995,25 @@ MonoBehaviour:
   - {x: 6, y: 0}
   - {x: -1, y: 0}
   - {x: 6, y: 1}
+
   - {x: -1, y: 1}
   - {x: 1, y: 0}
   - {x: 0, y: 0}
   - {x: 1, y: 1}
   - {x: 0, y: 1}
   - {x: 1, y: 0}
+
   - {x: -6, y: 0}
   - {x: 1, y: 1}
   - {x: -6, y: 1}
   - {x: 0, y: 6}
   - {x: 1, y: 6}
+
   - {x: 0, y: -1}
   - {x: 1, y: -1}
   - {x: 0, y: -1}
   - {x: -1, y: -1}
+
   - {x: 0, y: 6}
   - {x: -1, y: 6}
   - {x: 0, y: 6}
@@ -1075,6 +1080,7 @@ MonoBehaviour:
   - {x: -3, y: 21.000305}
   - {x: -2, y: 36.000397}
   - {x: -3, y: 36.000397}
+
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -1102,6 +1108,7 @@ MonoBehaviour:
   - {x: -1, y: 0, z: 0, w: -1}
   - {x: -1, y: 0, z: 0, w: -1}
   - {x: -1, y: 0, z: 0, w: -1}
+
   - {x: -1, y: 0, z: 0, w: -1}
   - {x: -1, y: 0, z: 0, w: -1}
   - {x: -1, y: 0, z: 0, w: -1}
@@ -1166,6 +1173,7 @@ MonoBehaviour:
   - {x: 1, y: 0, z: 0, w: -1}
   - {x: 1, y: 0, z: 0, w: -1}
   - {x: 1, y: 0, z: 0, w: -1}
+
   m_Colors: []
   m_UnwrapParameters:
     m_HardAngle: 88
@@ -1175,6 +1183,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_IsSelectable: 1
+
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
@@ -7222,7 +7231,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+
     - target: {fileID: 9162787188622159909, guid: 683181c9b60a820408ba2ae0f3a48c41,
+
         type: 3}
       propertyPath: m_Mesh
       value: 
@@ -7282,6 +7293,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+
     - target: {fileID: 9162787188622159929, guid: 683181c9b60a820408ba2ae0f3a48c41,
         type: 3}
       propertyPath: m_Name
@@ -7292,6 +7304,7 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 164653383}
+
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683181c9b60a820408ba2ae0f3a48c41, type: 3}
 --- !u!1 &1758920599
@@ -7806,7 +7819,9 @@ Transform:
   m_Father: {fileID: 1510110182}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+
 --- !u!43 &1852233030
+
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7969,7 +7984,9 @@ Mesh:
     offset: 0
     size: 0
     path: 
+
 --- !u!1001 &1871079625
+
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -7991,7 +8008,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint
       objectReference: {fileID: 0}
+
     - target: {fileID: 7807426219764807885, guid: 2198aa286f7fedf48854789e09ee55eb,
+
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.2
@@ -8600,10 +8619,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+
     - target: {fileID: 655884665854573742, guid: 363c4c42ecc0dd747bfb2c1b2232fb42,
+
         type: 3}
       propertyPath: m_Name
       value: GameSession
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159258100557067260, guid: 59897170725006645aa57aa766f20448,
+        type: 3}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 1112058619}
+    - target: {fileID: 3159258100557067260, guid: 59897170725006645aa57aa766f20448,
+        type: 3}
+      propertyPath: jumpSpeed
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 363c4c42ecc0dd747bfb2c1b2232fb42, type: 3}
@@ -8619,7 +8650,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ninja
       objectReference: {fileID: 0}
+
     - target: {fileID: 3048942497985423322, guid: 59897170725006645aa57aa766f20448,
+
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8694,6 +8727,7 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+
     - target: {fileID: 3145928448218227498, guid: 59897170725006645aa57aa766f20448,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -8709,6 +8743,7 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59897170725006645aa57aa766f20448, type: 3}
 --- !u!4 &2107391829 stripped
@@ -9178,14 +9213,17 @@ MeshRenderer:
 --- !u!33 &2146548206
 MeshFilter:
   m_ObjectHideFlags: 0
+
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
+
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146548202}
   m_Mesh: {fileID: 1081533182}
 --- !u!4 &2146548207
 Transform:
   m_ObjectHideFlags: 0
+
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9197,6 +9235,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+
 --- !u!1001 &857754195328732195
 PrefabInstance:
   m_ObjectHideFlags: 0

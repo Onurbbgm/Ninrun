@@ -8,16 +8,17 @@ public class Player : MonoBehaviour
     //private CharacterController controller;
     private Rigidbody myRigidbody;
 
-    public float speed = 600.0f;
+    public float speed = 7.0f;
     public float turnSpeed = 400.0f;
     private Vector3 moveDirection = Vector3.zero;
-    public float gravity = 20.0f;
-    public float jumpSpeed = 50.0f;
+    public float gravity = 100.0f;
+    public float jumpSpeed = 4.0f;
     public float health = 100.0f;
-    public int fallPointLost = 100;
+    public int fallPointLost = 500;
     public int points = 0;
     public int pointMultiplier = 2;
     public float volumeSoundEffects = 1f;
+    public float jumpMax = 7.0f;
     public AudioClip hitSound;    
     public AudioClip restartSound;
     public AudioClip powerUpSound;
@@ -34,7 +35,9 @@ public class Player : MonoBehaviour
     private bool beginTimerMagnet = false;
     private bool levelFinished = false;
     private bool checkGround = false;
-    private bool countTimeJump = false; 
+    private bool countTimeJump = false;
+    private bool addJump = true;
+    private bool firstJump = true;
 
     private Coroutine speedTimer = null;
     private Coroutine invincibilityTimer = null;
@@ -45,6 +48,7 @@ public class Player : MonoBehaviour
     private float durationInvincibility = 0.0f;
     private float durationMagnet = 0.0f;
     private float nextJumpTime = 0.2f;
+    private float addJumpTime = 0.4f;
     private ParticleSystem magnetParticle;
 
     public GameObject pausePanel;    
@@ -87,39 +91,7 @@ public class Player : MonoBehaviour
             {
                 ContinueGame();
             }
-        }
-        //if (beginTimerSpeed)
-        //{
-        //    StartTimerSpeed();
-        //}
-        //if (isInvincible)
-        //{
-        //    StartTimerInvincibility();
-        //}
-        //if (beginTimerMagnet)
-        //{
-        //    StartTimerMagnet();
-        //}
-        //if (countTimeJump)
-        //{
-        //    StartTimerNextJump();
-        //}
-        //Debug.Log(points);
-        //else
-        //{
-        //    anim.SetInteger("AnimationPar", 0);
-        //}
-
-        //Original code
-        //if (controller.isGrounded)
-        //{
-        //    moveDirection = transform.forward * Input.GetAxis("Vertical") * speed;
-        //}
-
-        //float turn = Input.GetAxis("Horizontal");
-        //transform.Rotate(0, turn * turnSpeed * Time.deltaTime, 0);
-        //controller.Move(moveDirection * Time.deltaTime);
-        //moveDirection.y -= gravity * Time.deltaTime;
+        }       
     }
 
     void PauseGame()
@@ -148,30 +120,38 @@ public class Player : MonoBehaviour
         if (Input.GetAxis("Mouse X") < 0)
         {
             Vector3 playerVelocity = new Vector3(Input.GetAxis("Mouse X") * speed, myRigidbody.velocity.y, speed);
-            //Debug.Log(playerVelocity);
+            //Debug.Log(Input.GetAxis("Mouse X"));
             myRigidbody.velocity = playerVelocity;
         }
         if(Input.GetAxis("Mouse X") > 0)
         {
             Vector3 playerVelocity = new Vector3(Input.GetAxis("Mouse X") * speed, myRigidbody.velocity.y, speed);
-            //Debug.Log(playerVelocity);
+            //Debug.Log(Input.GetAxis("Mouse X"));
             myRigidbody.velocity = playerVelocity;
         } 
             //moveDirection.y -= gravity * Time.deltaTime;
 
-        if (Input.GetKeyDown("space") && isGrounded)
+        if (Input.GetMouseButton(0) && jumpSpeed < jumpMax && addJump)//&& isGrounded)
         {
             Vector3 jumpVelocity = new Vector3(0f, jumpSpeed, 0f);
             myRigidbody.velocity += jumpVelocity;
+            jumpSpeed += 1.0f;
+            Debug.Log(jumpSpeed);
+            addJump = false;
             isGrounded = false;
             //Debug.Log("floor:"+isGrounded);
-            anim.SetTrigger("Jump");            
-            myAudioSource.Stop();
-            AudioSource.PlayClipAtPoint(jumpSound,transform.position, volumeSoundEffects);
+            if (firstJump)
+            {
+                anim.SetTrigger("Jump");
+                myAudioSource.Stop();
+                AudioSource.PlayClipAtPoint(jumpSound, transform.position, volumeSoundEffects);
+                firstJump = false;
+            }                       
             countTimeJump = true;
             nextJumpTime = 0.0f;
             nextJump = StartCoroutine(StartTimerNextJump());
-            
+            StartCoroutine(StartTimerAddJump());
+
         }
         else if (isGrounded && !myAudioSource.isPlaying && !levelFinished && !pausePanel.activeInHierarchy)
         {
@@ -204,9 +184,12 @@ public class Player : MonoBehaviour
         //Debug.Log("Layer: "+mask);
         if (Physics.Raycast(transform.position + Vector3.up * 0.01f, Vector3.down, out hit, 0.01f, mask))
         {
-            Debug.Log("Is touching floor RAYCAST");
+            //Debug.Log("Is touching floor RAYCAST");
             isGrounded = true;
             checkGround = false;
+            jumpSpeed = 4f;
+            addJump = true;
+            firstJump = true;
             //Debug.Log("is grounded");
             //anim.SetInteger("AnimationPar", 1);
             if (!myAudioSource.isPlaying)
@@ -246,7 +229,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
-            Debug.Log("is NOT on the ground");
+            //Debug.Log("is NOT on the ground");
         }
     }
 
@@ -254,13 +237,16 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
-            Debug.Log("IS on the ground");
+            //Debug.Log("IS on the ground");
             isGrounded = true;
+            jumpSpeed = 4f;
+            addJump = true;
+            firstJump = true;
             if (nextJump != null)
             {
                 StopCoroutine(nextJump);
                 checkGround = false;
-                Debug.Log("STOPPED");
+                //Debug.Log("STOPPED");
             }
         }
     }
@@ -337,76 +323,50 @@ public class Player : MonoBehaviour
         }
         yield return new WaitForSeconds(nextJumpTime);      
         checkGround = true;
-        countTimeJump = false;
-        //nextJumpTime += Time.deltaTime;
-        ////Debug.Log(nextJumpTime);
-        //float seconds = timerSpeed % 60f;
-        //Debug.Log("seconds "+seconds+" nextJumpTime "+nextJumpTime);
-        //if (seconds >= 0.5f)
-        //{
-        //    nextJumpTime = 0.0f;
-        //    checkGround = true;
-        //    countTimeJump = false;
-        //    Debug.Log("countTimeJump:"+countTimeJump);
-        //}
+        countTimeJump = false;        
         
     }
 
     private IEnumerator StartTimerSpeed()
     {
         
-        Debug.Log("start timer speed");
+        //Debug.Log("start timer speed");
         //timerSpeed += Time.deltaTime;
         //float seconds = timerSpeed % 60f;
         yield return new WaitForSeconds(durationSpeed);
-        Debug.Log("end timer speed");
+        //Debug.Log("end timer speed");
         beginTimerSpeed = false;
         speed = originalSpeed;
         myAudioSource.pitch = 0.80f;
-        //if(seconds >= durationSpeed)
-        //{
-        //    beginTimerSpeed = false;
-        //    timerSpeed = 0.0f;
-        //    speed = originalSpeed;
-        //    //Debug.Log(speed);
-        //    //Debug.Log("Time is up extra speed");
-        //}
+       
     }
 
     private IEnumerator StartTimerInvincibility()
     {
         
-        Debug.Log("start timer invi");
+        //Debug.Log("start timer invi");
         yield return new WaitForSeconds(durationInvincibility);
         isInvincible = false;
-        Debug.Log("stop timer invi");
-        //timerInvincibility += Time.deltaTime;
-        //float seconds = timerInvincibility % 60f;
-        //if (seconds >= durationInvincibility)
-        ////{
-        //    isInvincible = false;
-        //    timerInvincibility = 0.0f;            
-        //    //Debug.Log("Time is up invincibility");
-        //}
+        //Debug.Log("stop timer invi");
+      
     }
 
     private IEnumerator StartTimerMagnet()
     {
-        Debug.Log("start timer mag");
+        //Debug.Log("start timer mag");
         yield return new WaitForSeconds(durationMagnet);
-        Debug.Log("stop timer magn");
+        //Debug.Log("stop timer magn");
         beginTimerMagnet = false;
         mySphereCollider.radius = 0f;
-        magnetParticle.Stop();
-        //timerMagnet += Time.deltaTime;
-        //float seconds = timerMagnet % 60f;
-        //if (seconds >= durationMagnet)
-        //{
-        //    beginTimerMagnet = false;
-        //    timerMagnet = 0.0f;
-        //    mySphereCollider.radius = 0f;
-        //    //Debug.Log("Time is up magnet");
-        //}
+        magnetParticle.Stop();      
+    }
+
+    private IEnumerator StartTimerAddJump()
+    {
+        yield return new WaitForSeconds(addJumpTime);
+        Debug.Log(addJumpTime);
+        addJump = true;
+        
     }
 
     public void SetLastPosition(Vector3 newPosition)
