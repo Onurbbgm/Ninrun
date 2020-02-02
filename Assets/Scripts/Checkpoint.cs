@@ -9,6 +9,13 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<Player>().SetLastPosition(savedPosition);
+        if(other.GetComponent<Player>() != null)
+        {
+            other.GetComponent<Player>().SetLastPosition(savedPosition);
+        }
+        else
+        {
+            other.GetComponentInParent<Player>().SetLastPosition(savedPosition);
+        }
     }
 }

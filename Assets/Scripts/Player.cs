@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public AudioClip jumpSound;
 
     private SphereCollider mySphereCollider;
+    //private BoxCollider myFootCollider;
     private AudioSource myAudioSource;
     private float originalSpeed = 0f;
     private bool isGrounded;
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour
         anim = gameObject.GetComponentInChildren<Animator>();
         myRigidbody = GetComponent<Rigidbody>();
         mySphereCollider = GetComponentInChildren<SphereCollider>();
+        //myFootCollider = GetComponentInChildren<BoxCollider>();
         isGrounded = true;
         anim.SetInteger("AnimationPar", 1);
         myAudioSource = GetComponent<AudioSource>();        
@@ -99,7 +101,7 @@ public class Player : MonoBehaviour
         Time.timeScale = 0;
         pausePanel.SetActive(true);
         myAudioSource.Stop();
-        Debug.Log("Paused");
+        //Debug.Log("Paused");
         
     }
 
@@ -108,24 +110,24 @@ public class Player : MonoBehaviour
         Time.timeScale = 1;
         pausePanel.SetActive(false);
         myAudioSource.Play();
-        Debug.Log("Continued");
+        //Debug.Log("Continued");
     }
 
     void Movement()
     {
         //float movement = Input.GetAxis("Horizontal");
-        //Vector3 playerVelocity = new Vector3(movement*speed, myRigidbody.velocity.y, speed);
+        Vector3 playerVelocity = new Vector3(0, myRigidbody.velocity.y, speed);
         //Debug.Log(playerVelocity);
-        //myRigidbody.velocity = playerVelocity;
+        myRigidbody.velocity = playerVelocity;
         if (Input.GetAxis("Mouse X") < 0)
         {
-            Vector3 playerVelocity = new Vector3(Input.GetAxis("Mouse X") * speed, myRigidbody.velocity.y, speed);
+            playerVelocity = new Vector3(Input.GetAxis("Mouse X") * speed, myRigidbody.velocity.y, speed);
             //Debug.Log(Input.GetAxis("Mouse X"));
             myRigidbody.velocity = playerVelocity;
         }
         if(Input.GetAxis("Mouse X") > 0)
         {
-            Vector3 playerVelocity = new Vector3(Input.GetAxis("Mouse X") * speed, myRigidbody.velocity.y, speed);
+            playerVelocity = new Vector3(Input.GetAxis("Mouse X") * speed, myRigidbody.velocity.y, speed);
             //Debug.Log(Input.GetAxis("Mouse X"));
             myRigidbody.velocity = playerVelocity;
         } 
@@ -136,7 +138,7 @@ public class Player : MonoBehaviour
             Vector3 jumpVelocity = new Vector3(0f, jumpSpeed, 0f);
             myRigidbody.velocity += jumpVelocity;
             jumpSpeed += 1.0f;
-            Debug.Log(jumpSpeed);
+            //Debug.Log(jumpSpeed);
             addJump = false;
             isGrounded = false;
             //Debug.Log("floor:"+isGrounded);
@@ -235,19 +237,34 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        //if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        //{
+        //    //Debug.Log("IS on the ground");
+        //    isGrounded = true;
+        //    jumpSpeed = 4f;
+        //    addJump = true;
+        //    firstJump = true;
+        //    if (nextJump != null)
+        //    {
+        //        StopCoroutine(nextJump);
+        //        checkGround = false;
+        //        //Debug.Log("STOPPED");
+        //    }
+        //}
+    }
+
+    public void ConfigJump()
+    {
+        //Debug.Log("IS on the ground");
+        isGrounded = true;
+        jumpSpeed = 4f;
+        addJump = true;
+        firstJump = true;
+        if (nextJump != null)
         {
-            //Debug.Log("IS on the ground");
-            isGrounded = true;
-            jumpSpeed = 4f;
-            addJump = true;
-            firstJump = true;
-            if (nextJump != null)
-            {
-                StopCoroutine(nextJump);
-                checkGround = false;
-                //Debug.Log("STOPPED");
-            }
+            StopCoroutine(nextJump);
+            checkGround = false;
+            //Debug.Log("STOPPED");
         }
     }
 
@@ -364,7 +381,7 @@ public class Player : MonoBehaviour
     private IEnumerator StartTimerAddJump()
     {
         yield return new WaitForSeconds(addJumpTime);
-        Debug.Log(addJumpTime);
+        //Debug.Log(addJumpTime);
         addJump = true;
         
     }

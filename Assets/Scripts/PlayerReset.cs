@@ -6,8 +6,15 @@ public class PlayerReset : MonoBehaviour
 {
 
     private void OnTriggerEnter(Collider other)
-    {
-        other.GetComponent<Player>().ResetLastCheckPoint();
+    {        
+        if (other.GetComponent<Player>() != null)
+        {
+            other.GetComponent<Player>().ResetLastCheckPoint();
+        }
+        else
+        {
+            other.GetComponentInParent<Player>().ResetLastCheckPoint();
+        }
     }
 
 }

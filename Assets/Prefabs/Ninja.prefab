@@ -1,5 +1,63 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &235334876086060122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3476721176842154169}
+  - component: {fileID: 993954840939199702}
+  - component: {fileID: 1401165654699291128}
+  m_Layer: 20
+  m_Name: Foot Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3476721176842154169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235334876086060122}
+  m_LocalRotation: {x: 0.33080956, y: -0.006226571, z: -0.016728397, w: 0.9435287}
+  m_LocalPosition: {x: -0.0004, y: -0.0032, z: 0.0003}
+  m_LocalScale: {x: 0.004055493, y: 0.004055492, z: 0.004055492}
+  m_Children: []
+  m_Father: {fileID: 3049195016228459120}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &993954840939199702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235334876086060122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a65da9da8333cf4193e69d6e9bf47fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &1401165654699291128
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235334876086060122}
+  m_Material: {fileID: 13400000, guid: fef7d2fef2ea5ff44839e6b173e9775f, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.727098
+  m_Height: 4.381001
+  m_Direction: 1
+  m_Center: {x: 1.2270976, y: -0.5592949, z: 0.00000002575506}
 --- !u!1 &3045420662897412332
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +379,7 @@ Transform:
   m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 0.99999994}
   m_Children:
   - {fileID: 3049255483812584488}
+  - {fileID: 3476721176842154169}
   m_Father: {fileID: 3049457389044233318}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -681,6 +740,7 @@ MonoBehaviour:
   points: 0
   pointMultiplier: 2
   volumeSoundEffects: 1
+  jumpMax: 7
   hitSound: {fileID: 8300000, guid: 6c3cfa7358f43f24bad4f6676d583d5d, type: 3}
   restartSound: {fileID: 8300000, guid: ecdda5ed958af424a9d687289b7d9dcb, type: 3}
   powerUpSound: {fileID: 8300000, guid: b2e3da2ecf93e004da890f1eec46660e, type: 3}
