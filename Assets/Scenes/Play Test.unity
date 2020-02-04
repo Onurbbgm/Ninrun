@@ -1683,6 +1683,9 @@ GameObject:
   - component: {fileID: 352832030}
   - component: {fileID: 352832029}
   - component: {fileID: 352832028}
+  - component: {fileID: 352832033}
+  - component: {fileID: 352832034}
+  - component: {fileID: 352832035}
   m_Layer: 8
   m_Name: Level Tunel
   m_TagString: Untagged
@@ -5397,6 +5400,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &352832033
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352832027}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.81645346, y: 60.000023, z: 2.8687136}
+  m_Center: {x: -3.5917733, y: 30.00001, z: -0.032289088}
+--- !u!65 &352832034
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352832027}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8164535, y: 60.000023, z: 2.868714}
+  m_Center: {x: -0.4150594, y: 30.00001, z: 0.08890098}
+--- !u!114 &352832035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352832027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0684e724b952f8444b98f1a65d091a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &455250903
 Mesh:
   m_ObjectHideFlags: 0
@@ -10192,7 +10233,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18202
+  m_Name: pb_Mesh17358
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
