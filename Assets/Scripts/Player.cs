@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public float speed = 7.0f;
     public float turnSpeed = 400.0f;
     private Vector3 moveDirection = Vector3.zero;
-    public float gravity = 100.0f;
+    //public float gravity = 100.0f;
     public float jumpSpeed = 4.0f;
     public float health = 100.0f;
     public int fallPointLost = 500;
@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     private bool countTimeJump = false;
     private bool addJump = true;
     private bool firstJump = true;
+    private bool isInTunnel = false;
 
     private Coroutine speedTimer = null;
     private Coroutine invincibilityTimer = null;
@@ -121,13 +122,29 @@ public class Player : MonoBehaviour
         myRigidbody.velocity = playerVelocity;
         if (Input.GetAxis("Mouse X") < 0)
         {
-            playerVelocity = new Vector3(Input.GetAxis("Mouse X") * speed, myRigidbody.velocity.y, speed);
+            if (!isInTunnel)
+            {
+                playerVelocity = new Vector3(Input.GetAxis("Mouse X") * speed, myRigidbody.velocity.y, speed);
+            }
+            else
+            {
+                playerVelocity = new Vector3(myRigidbody.velocity.x, Input.GetAxis("Mouse X") * speed, speed);
+            }
+            
             //Debug.Log(Input.GetAxis("Mouse X"));
             myRigidbody.velocity = playerVelocity;
         }
         if(Input.GetAxis("Mouse X") > 0)
         {
-            playerVelocity = new Vector3(Input.GetAxis("Mouse X") * speed, myRigidbody.velocity.y, speed);
+            if (!isInTunnel)
+            {
+                playerVelocity = new Vector3(Input.GetAxis("Mouse X") * speed, myRigidbody.velocity.y, speed);
+            }
+            else
+            {
+                playerVelocity = new Vector3(myRigidbody.velocity.x, Input.GetAxis("Mouse X") * speed, speed);
+            }
+            
             //Debug.Log(Input.GetAxis("Mouse X"));
             myRigidbody.velocity = playerVelocity;
         } 
@@ -299,6 +316,16 @@ public class Player : MonoBehaviour
             AudioSource.PlayClipAtPoint(powerUpSound, transform.position, volumeSoundEffects);
         }
 
+        if(other.gameObject.layer == 21)
+        {
+            isGrounded = false;
+            isInTunnel = true;
+            //Physics.gravity = new Vector3(9.81f, 0f, 0f);
+            GetComponent<ConstantForce>().force = new Vector3(30.0f, 0f, 0);
+            transform.eulerAngles = new Vector3(0, 0, 90f);
+            Debug.Log("encostou na parede");
+        }
+
         if(other.tag == "SpeedPowerUp")
         {
             if (!beginTimerSpeed)
@@ -331,7 +358,20 @@ public class Player : MonoBehaviour
             AudioSource.PlayClipAtPoint(powerUpSound, transform.position, volumeSoundEffects);
         }
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 21 || other.gameObject.layer == 22)
+        {
+            //Physics.gravity = new Vector3(0f, -9.81f, 0f);
+            GetComponent<ConstantForce>().force = new Vector3(0f, 0f, 0);
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            isGrounded = true;
+            isInTunnel = false;
+            Debug.Log("saiu da parede");
+        }
+    }
+
     private IEnumerator StartTimerNextJump()
     {
         while (pausePanel.activeInHierarchy)
